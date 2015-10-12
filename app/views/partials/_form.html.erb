@@ -1,0 +1,9 @@
+<div id="new-idea">
+  <%= form_for @idea do |f| %>
+      <%= f.label :title, "Title of Idea", class:"mdl-textfield__label" %>
+      <%= f.text_field :title, class:"mdl-textfield__input" %>
+      <%= f.label :body, "Body of Idea", class:"mdl-textfield__label" %>
+      <%= f.text_area :body, class:"mdl-textfield__input" %>
+      <%= f.submit "Create" %>
+  <% end %>
+</div>

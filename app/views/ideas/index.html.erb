@@ -1,0 +1,43 @@
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">IdeaBox 2.0</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+        </nav>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--8-col">
+            <h4>List of Ideas</h4>
+            <table class="mdl-data-table mdl-js-data-table">
+              <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Title</th>
+                <th class="mdl-data-table__cell--non-numeric">Body</th>
+                <th class="mdl-data-table__cell--non-numeric">Quality</th>
+                <th class="mdl-data-table__cell--non-numeric">Thumbs Up</th>
+                <th class="mdl-data-table__cell--non-numeric">Thumbs Down</th>
+                <th class="mdl-data-table__cell--non-numeric">Edit</th>
+                <th class="mdl-data-table__cell--non-numeric">Delete</th>
+              </tr>
+              </thead>
+              <tbody id="all-ideas">
+              </tbody>
+            </table>
+          </div>
+          <div class="mdl-cell mdl-cell--3-col new-idea">
+            <h4>New Idea</h4>
+            <input type="text" id="idea-title" />
+            <input type="text" id="idea-body" />
+            <button id="idea-create">Create</button>
+          </div>
+        </div>
+        </div>
+    </main>
+</div>

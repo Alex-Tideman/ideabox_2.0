@@ -15,42 +15,42 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--8-col">
             <h4>List of Ideas</h4>
-            <table class="mdl-data-table mdl-js-data-table">
+            <table id="idea-table" class="mdl-data-table mdl-js-data-table">
               <thead>
               <tr>
                 <th class="mdl-data-table__cell--non-numeric">Title</th>
                 <th class="mdl-data-table__cell--non-numeric">Body</th>
                 <th class="mdl-data-table__cell--non-numeric">Quality</th>
-                <th class="mdl-data-table__cell--non-numeric">Thumbs Up</th>
-                <th class="mdl-data-table__cell--non-numeric">Thumbs Down</th>
-                <th class="mdl-data-table__cell--non-numeric">Edit</th>
-                <th class="mdl-data-table__cell--non-numeric">Delete</th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
               </tr>
               </thead>
               <tbody id="all-ideas">
               <% @ideas.each do |idea| %>
-                  <tr>
+                  <tr data-id="<%= idea.id %>">
                     <td class="mdl-data-table__cell--non-numeric"><%= idea.title %></td>
                     <td class="mdl-data-table__cell--non-numeric"><%= idea.body %></td>
                     <td class="mdl-data-table__cell--non-numeric"><%= idea.quality_word %></td>
                     <td class="mdl-data-table__cell--non-numeric">
-                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">add</i>
+                      <button id="thumbs_down" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons thumb_up">thumb_up</i>
                       </button>
                     </td>
                     <td class="mdl-data-table__cell--non-numeric">
-                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">minus</i>
+                      <button id="thumbs_up" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons thumb_down">thumb_down</i>
                       </button>
                     </td>
                     <td class="mdl-data-table__cell--non-numeric">
-                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">edit</i>
+                      <button id="edit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons edit">mode_edit</i>
                       </button>
                     </td>
                     <td class="mdl-data-table__cell--non-numeric">
-                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">X</i>
+                      <button id="delete" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons">delete</i>
                       </button>
                     </td>
                   </tr>
@@ -62,7 +62,7 @@
             <h4>New Idea</h4>
             <input type="text" id="idea-title" />
             <input type="text" id="idea-body" />
-            <button id="idea-create">Create</button>
+            <button id="idea-create">Save</button>
           </div>
         </div>
         </div>

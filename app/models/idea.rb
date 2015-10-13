@@ -1,8 +1,7 @@
 class Idea < ActiveRecord::Base
+  attr_accessor :quality_word
 
   validates :title, :body, presence: true
-
-  before_save :quality_word
 
   def quality_word
     if quality == 1

@@ -1,70 +1,55 @@
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">IdeaBox 2.0</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-        </nav>
-      </div>
-    </header>
-    <main class="mdl-layout__content">
-      <div class="page-content">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--8-col">
-            <h4>List of Ideas</h4>
-            <table id="idea-table" class="mdl-data-table mdl-js-data-table">
-              <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Title</th>
-                <th class="mdl-data-table__cell--non-numeric">Body</th>
-                <th class="mdl-data-table__cell--non-numeric">Quality</th>
-                <th class="mdl-data-table__cell--non-numeric"></th>
-                <th class="mdl-data-table__cell--non-numeric"></th>
-                <th class="mdl-data-table__cell--non-numeric"></th>
-                <th class="mdl-data-table__cell--non-numeric"></th>
-              </tr>
-              </thead>
-              <tbody id="all-ideas">
-              <% @ideas.each do |idea| %>
-                  <tr data-id="<%= idea.id %>">
-                    <td class="mdl-data-table__cell--non-numeric"><%= idea.title %></td>
-                    <td class="mdl-data-table__cell--non-numeric"><%= idea.body %></td>
-                    <td class="mdl-data-table__cell--non-numeric"><%= idea.quality_word %></td>
-                    <td class="mdl-data-table__cell--non-numeric">
-                      <button id="thumbs_down" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons thumb_up">thumb_up</i>
-                      </button>
-                    </td>
-                    <td class="mdl-data-table__cell--non-numeric">
-                      <button id="thumbs_up" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons thumb_down">thumb_down</i>
-                      </button>
-                    </td>
-                    <td class="mdl-data-table__cell--non-numeric">
-                      <button id="edit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons edit">mode_edit</i>
-                      </button>
-                    </td>
-                    <td class="mdl-data-table__cell--non-numeric">
-                      <button id="delete" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">delete</i>
-                      </button>
-                    </td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-          <div class="mdl-cell mdl-cell--3-col new-idea">
-            <h4>New Idea</h4>
-            <input type="text" id="idea-title" />
-            <input type="text" id="idea-body" />
-            <button id="idea-create">Save</button>
-          </div>
-        </div>
-        </div>
-    </main>
+<div class="page-content">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--8-col">
+      <h4>List of Ideas</h4>
+      <table id="idea-table" class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Title</th>
+          <th class="mdl-data-table__cell--non-numeric">Body</th>
+          <th class="mdl-data-table__cell--non-numeric">Quality</th>
+          <th class="mdl-data-table__cell--non-numeric"></th>
+          <th class="mdl-data-table__cell--non-numeric"></th>
+          <th class="mdl-data-table__cell--non-numeric"></th>
+          <th class="mdl-data-table__cell--non-numeric"></th>
+        </tr>
+        </thead>
+        <tbody id="all-ideas">
+        <% @ideas.each do |idea| %>
+            <tr data-id="<%= idea.id %>">
+              <td class="mdl-data-table__cell--non-numeric"><%= idea.title %></td>
+              <td class="mdl-data-table__cell--non-numeric"><%= idea.body %></td>
+              <td class="mdl-data-table__cell--non-numeric"><%= idea.quality_word %></td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_down">
+                  <i class="material-icons thumb_up">thumb_up</i>
+                </button>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_up">
+                  <i class="material-icons thumb_down">thumb_down</i>
+                </button>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored edit">
+                  <i class="material-icons edit">mode_edit</i>
+                </button>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored delete">
+                  <i class="material-icons">delete</i>
+                </button>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col new-idea">
+      <h4>New Idea</h4>
+      <input type="text" id="idea-title" />
+      <input type="text" id="idea-body" />
+      <button id="idea-create">Save</button>
+    </div>
+  </div>
 </div>

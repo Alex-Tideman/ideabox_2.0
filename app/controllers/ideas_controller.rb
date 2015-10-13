@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   respond_to :json
 
   def index
-    @ideas = Idea.all
+    @ideas = Idea.order('created_at DESC')
   end
 
   def create

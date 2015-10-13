@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  respond_to :json
 
   def index
     @ideas = Idea.all
@@ -6,22 +7,28 @@ class IdeasController < ApplicationController
 
   def create
     @idea = Idea.create(idea_params)
-    render json: @idea
+    respond_with @idea
+  end
+
+  def edit
+    @idea = Idea.find(params[:id])
   end
 
   def update
-    @idea = Idea.update_attributes(idea_params)
-    render json: @idea
+    @idea = Idea.find(params[:id])
+    @idea.update_attributes(idea_params)
+    redirect_to root_path
   end
 
   def destory
+    @idea = Idea.find(params[:id])
     @idea.destroy
   end
 
   private
 
   def idea_params
-    params.permit(:title,:body,:quality)
+    params.require(:idea).permit(:title,:body,:quality)
   end
 
 end

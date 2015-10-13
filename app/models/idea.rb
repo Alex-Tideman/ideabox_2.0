@@ -1,5 +1,6 @@
 class Idea < ActiveRecord::Base
   attr_accessor :quality_word
+  attr_reader :trunc_body
 
   validates :title, :body, presence: true
 
@@ -10,6 +11,14 @@ class Idea < ActiveRecord::Base
       "Plausible"
     else
       "Genius"
+    end
+  end
+
+  def trunc_body
+    if body.length > 100
+      body.truncate(100, separator: ' ')
+    else
+      body
     end
   end
 

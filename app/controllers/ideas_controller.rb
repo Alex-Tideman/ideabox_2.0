@@ -20,9 +20,10 @@ class IdeasController < ApplicationController
     redirect_to root_path
   end
 
-  def destory
+  def destroy
     @idea = Idea.find(params[:id])
     @idea.destroy
+    respond_with @idea
   end
 
   private

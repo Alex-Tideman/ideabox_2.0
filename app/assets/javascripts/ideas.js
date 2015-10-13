@@ -1,6 +1,8 @@
 $(document).ready(function() {
     ideaCreation();
-    editIdea();
+    ideaDestroy();
+    thumbsUp();
+    thumbsDown();
 });
 
 function ideaCreation() {
@@ -26,32 +28,92 @@ function ideaCreation() {
     });
 };
 
-function editIdea() {
-    $(".edit").on('click', function (event) {
-        event.preventDefault();
 
-        var idea_id = $(this).parent().parent().attr("data-id");
+function ideaDestroy() {
+    $(".delete").on('click', function () {
+
+        var ideaId = $(this).parent().parent().attr("data-id");
+        var ideaRow = $(this).parent().closest('tr');
 
         $.ajax({
-            type: "GET",
-            url: "/ideas/" + idea_id + "/edit",
-            success: function() {
-                console.log('go to edit page for #' + idea_id)
+            url: "/ideas/" + ideaId,
+            type: "DELETE",
+            dataType: "json",
+            data: { id: ideaId},
+            success: function(idea) {
+                ideaRow.remove();
             }
         });
     });
 };
 
+function thumbsUp(){
+    $('.thumbs_up').on('click', function () {
+
+        var ideaId = $(this).parent().parent().attr("data-id");
+        var quality = $(this).parent().parent().find('.quality');
+        if(quality.html('Swill')) {
+            quality.html('Plausible');
+        }
+        else if(quality.html('Plausible')) {
+            quality.html('Genius');
+        }
+        else {
+            quality.html('Genius');
+        }
+
+        $.ajax({
+            url: "/quality/" + ideaId + "/up",
+            type: "PUT",
+            dataType: "json",
+            data: { id: ideaId },
+            success: function() {
+                thumbsUp();
+                thumbsDown();
+            }
+        });
+    })
+}
+
+function thumbsDown(){
+    $('.thumbs_down').on('click', function () {
+
+        var ideaId = $(this).parent().parent().attr("data-id");
+        var quality = $(this).parent().parent().find('.quality');
+        if(quality.html('Genius')) {
+            quality.html('Plausible');
+        }
+        else if(quality.html('Plausible')) {
+            quality.html('Swill');
+        }
+        else {
+            quality.html('Swill');
+        }
+
+        $.ajax({
+            url: "/quality/" + ideaId + "/down",
+            type: "PUT",
+            dataType: "json",
+            data: { id: ideaId },
+            success: function() {
+                thumbsDown();
+                thumbsUp();
+            }
+        });
+    })
+}
+
+
 function renderIdea(idea) {
     $("#all-ideas").prepend(
     "<tr" + " data-id=" + idea.id + ">"
-        + "<td class='mdl-data-table__cell--non-numeric'>" + idea.title + "</td>"
-        + "<td class='mdl-data-table__cell--non-numeric'>" + trimBody(idea.body)  + "</td>"
-        + "<td class='mdl-data-table__cell--non-numeric'>Swill</td>"
-        + "<td class='mdl-data-table__cell--non-numeric'><button class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_up'><i class='material-icons'>thumb_up</i></button></td>"
-        + "<td class='mdl-data-table__cell--non-numeric'><button class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_down'><i class='material-icons'>thumb_down</i></button></td>"
-        + "<td class='mdl-data-table__cell--non-numeric'><button class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored edit'><i class='material-icons'>mode_edit</i></button></td>"
-        + "<td class='mdl-data-table__cell--non-numeric'><button class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored delete'><i class='material-icons'>delete</i></button></td>"
+        + "<td class='title'>" + idea.title + "</td>"
+        + "<td class='body'>" + trimBody(idea.body)  + "</td>"
+        + "<td class='quality'>Swill</td>"
+        + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light green thumbs_up'><i class='material-icons'>thumb_up</i></button></td>"
+        + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light red thumbs_down'><i class='material-icons'>thumb_down</i></button></td>"
+        + "<td class='button-col'>" + "<a href='/ideas/" + idea.id + "/edit'" +  "class='btn-floating btn-large waves-effect waves-light blue edit'><i class='material-icons thumb_down'>mode_edit</i></a></td>"
+        + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light black delete'><i class='material-icons'>delete</i></button></td>"
         + "</tr>"
     )
 };

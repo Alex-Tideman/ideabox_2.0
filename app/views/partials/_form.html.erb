@@ -1,9 +1,10 @@
-<div id="edit-idea">
+<div class="edit-idea">
+  <h3>Edit Idea</h3>
   <%= form_for @idea do |f| %>
-      <%= f.label :title, "Edit Title", class:"mdl-textfield__label" %>
-      <%= f.text_field :title, class:"mdl-textfield__input" %>
-      <%= f.label :body, "Edit Body", class:"mdl-textfield__label" %>
-      <%= f.text_area :body, class:"mdl-textfield__input" %>
-      <%= f.submit "Save" %>
+      <%= f.label :title, "Edit Title" %><br>
+      <%= f.text_field :title, id:"idea-title"  %><br>
+      <%= f.label :body, "Edit Body" %><br>
+      <%= f.text_area :body, id:"idea-body"  %><br>
+      <%= f.submit "Save", class:"btn waves-effect waves-light blue" %>
   <% end %>
 </div>

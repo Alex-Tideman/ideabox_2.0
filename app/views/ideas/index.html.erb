@@ -1,42 +1,39 @@
-<div class="page-content">
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--8-col">
+<div class="row">
+    <div class="col s9 idea-list">
       <h4>List of Ideas</h4>
-      <table id="idea-table" class="mdl-data-table mdl-js-data-table">
+      <table id="idea-table" class="responsive-table">
         <thead>
         <tr>
-          <th class="mdl-data-table__cell--non-numeric">Title</th>
-          <th class="mdl-data-table__cell--non-numeric">Body</th>
-          <th class="mdl-data-table__cell--non-numeric">Quality</th>
-          <th class="mdl-data-table__cell--non-numeric"></th>
-          <th class="mdl-data-table__cell--non-numeric"></th>
-          <th class="mdl-data-table__cell--non-numeric"></th>
-          <th class="mdl-data-table__cell--non-numeric"></th>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Quality</th>
+          <th class='button-col'></th>
+          <th class='button-col'></th>
+          <th class='button-col'></th>
+          <th class='button-col'></th>
         </tr>
         </thead>
         <tbody id="all-ideas">
         <% @ideas.each do |idea| %>
             <tr data-id="<%= idea.id %>">
-              <td class="mdl-data-table__cell--non-numeric"><%= idea.title %></td>
-              <td class="mdl-data-table__cell--non-numeric"><%= idea.body %></td>
-              <td class="mdl-data-table__cell--non-numeric"><%= idea.quality_word %></td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_down">
+              <td class="title"><%= idea.title %></td>
+              <td class="body"><%= idea.trunc_body %></td>
+              <td class="quality"><%= idea.quality_word %></td>
+              <td class="button-col">
+                <button class="btn-floating btn-large waves-effect waves-light green thumbs_up">
                   <i class="material-icons thumb_up">thumb_up</i>
                 </button>
               </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored thumbs_up">
+              <td class="button-col">
+                <button class="btn-floating btn-large waves-effect waves-light red thumbs_down">
                   <i class="material-icons thumb_down">thumb_down</i>
                 </button>
               </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored edit">
-                  <i class="material-icons edit">mode_edit</i>
-                </button>
+              <td class="button-col">
+                <a href='/ideas/<%= idea.id %>/edit' class='btn-floating btn-large waves-effect waves-light blue edit'><i class="material-icons thumb_down">mode_edit</i></a></td>
               </td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored delete">
+              <td class="button-col">
+                <button class="btn-floating btn-large waves-effect waves-light black delete">
                   <i class="material-icons">delete</i>
                 </button>
               </td>
@@ -45,11 +42,11 @@
         </tbody>
       </table>
     </div>
-    <div class="mdl-cell mdl-cell--3-col new-idea">
+    <div class="col s3 new-idea">
       <h4>New Idea</h4>
-      <input type="text" id="idea-title" />
-      <input type="text" id="idea-body" />
-      <button id="idea-create">Save</button>
+      Title:<br> <input type="text" id="idea-title" /><br>
+      Body:<br> <input type="text" id="idea-body" /><br>
+      <button id="idea-create" class="btn waves-effect waves-light blue">Save</button>
     </div>
   </div>
 </div>

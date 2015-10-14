@@ -53,13 +53,6 @@ function thumbsUp(){
         var ideaId = $(this).parent().parent().attr("data-id");
         var quality = $(this).parent().parent().find('.quality');
 
-        if(quality.html('Swill')) {
-            quality.html('Plausible');
-        }
-        else if(quality.html('Plausible')) {
-            quality.html('Genius');
-        }
-
         $.ajax({
             url: "/quality/" + ideaId + "/up",
             type: "PUT",
@@ -78,13 +71,6 @@ function thumbsDown(){
 
         var ideaId = $(this).parent().parent().attr("data-id");
         var quality = $(this).parent().parent().find('.quality');
-
-        if(quality.html('Genius')) {
-            quality.html('Plausible');
-        }
-        else if(quality.html('Plausible')) {
-            quality.html('Swill');
-        }
 
         $.ajax({
             url: "/quality/" + ideaId + "/down",

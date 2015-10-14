@@ -1,46 +1,12 @@
 <div class="row">
     <div class="col s9 idea-list">
       <h4>List of Ideas</h4>
-      <table id="idea-table" class="responsive-table">
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Quality</th>
-          <th class='button-col'></th>
-          <th class='button-col'></th>
-          <th class='button-col'></th>
-          <th class='button-col'></th>
-        </tr>
-        </thead>
-        <tbody id="all-ideas">
-        <% @ideas.each do |idea| %>
-            <tr data-id="<%= idea.id %>">
-              <td class="title"><%= idea.title %></td>
-              <td class="body"><%= idea.trunc_body %></td>
-              <td class="quality"><%= idea.quality_word %></td>
-              <td class="button-col">
-                <button class="btn-floating btn-large waves-effect waves-light green thumbs_up">
-                  <i class="material-icons thumb_up">thumb_up</i>
-                </button>
-              </td>
-              <td class="button-col">
-                <button class="btn-floating btn-large waves-effect waves-light red thumbs_down">
-                  <i class="material-icons thumb_down">thumb_down</i>
-                </button>
-              </td>
-              <td class="button-col">
-                <a href='/ideas/<%= idea.id %>/edit' class='btn-floating btn-large waves-effect waves-light blue edit'><i class="material-icons thumb_down">mode_edit</i></a></td>
-              </td>
-              <td class="button-col">
-                <button class="btn-floating btn-large waves-effect waves-light black delete">
-                  <i class="material-icons">delete</i>
-                </button>
-              </td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
+      <%= form_tag ideas_path, :method => 'get', :id => "ideas_search" do %>
+          <p id="idea-filter">
+            <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+          </p>
+          <div id="ideas"><%= render partial: 'partials/idea_table' %></div>
+      <% end %>
     </div>
     <div class="col s3 new-idea">
       <h4>New Idea</h4>

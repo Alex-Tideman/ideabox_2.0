@@ -1,9 +1,10 @@
 class IdeasController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   respond_to :json, :html
 
   def index
-    @ideas = Idea.search(params[:search]).order('created_at DESC')
-
+    @ideas = Idea.search(params[:search]).order(sort_column + " " + sort_direction)
   end
 
   def create
@@ -33,4 +34,11 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title,:body,:quality)
   end
 
+  def sort_column
+    Idea.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

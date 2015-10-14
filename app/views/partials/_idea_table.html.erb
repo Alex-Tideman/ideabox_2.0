@@ -1,9 +1,9 @@
 <table id="idea-table" class="responsive-table idea-table">
   <thead>
   <tr>
-    <th class="title">Title</th>
-    <th class="body">Body</th>
-    <th class="quality">Quality</th>
+    <th class="title"><%= sortable "title", "Title" %></th>
+    <th class="body"><%= sortable "body", "Body" %></th>
+    <th class="quality"><%= sortable "quality", "Quality" %></th>
     <th class='button-col'></th>
     <th class='button-col'></th>
     <th class='button-col'></th>
@@ -35,12 +35,5 @@
   <% end %>
   </tbody>
 </table>
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
+<div class="idea-list-pad">
 </div>

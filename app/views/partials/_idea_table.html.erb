@@ -13,8 +13,8 @@
   <tbody id="all-ideas">
   <% @ideas.each do |idea| %>
       <tr data-id="<%= idea.id %>">
-        <td class="title"><%= idea.title %></td>
-        <td class="body"><%= idea.trunc_body %></td>
+        <td class="title"><%= best_in_place idea, :title, type: :textarea%></td>
+        <td class="body"><%= best_in_place idea, :trunc_body, type: :textarea %></td>
         <td class="quality"><%= idea.quality_word %></td>
         <td class="button-col">
           <button class="btn-floating btn-large waves-effect waves-light green thumbs_up">
@@ -27,9 +27,6 @@
           </button>
         </td>
         <td class="button-col">
-          <a href='/ideas/<%= idea.id %>/edit' class='btn-floating btn-large waves-effect waves-light blue edit'><i class="material-icons thumb_down">mode_edit</i></a></td>
-        </td>
-        <td class="button-col">
           <button class="btn-floating btn-large waves-effect waves-light black delete">
             <i class="material-icons">delete</i>
           </button>
@@ -38,3 +35,12 @@
   <% end %>
   </tbody>
 </table>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>

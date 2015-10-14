@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
 
   def index
     @ideas = Idea.search(params[:search]).order('created_at DESC')
@@ -18,7 +18,7 @@ class IdeasController < ApplicationController
   def update
     @idea = Idea.find(params[:id])
     @idea.update_attributes(idea_params)
-    redirect_to root_path
+    respond_with @idea
   end
 
   def destroy

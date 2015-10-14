@@ -3,6 +3,7 @@ $(document).ready(function() {
     ideaDestroy();
     thumbsUp();
     thumbsDown();
+    $('.best_in_place').best_in_place();
 });
 
 function ideaCreation() {
@@ -92,7 +93,6 @@ function renderIdea(idea) {
         + "<td class='quality'>Swill</td>"
         + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light green thumbs_up'><i class='material-icons'>thumb_up</i></button></td>"
         + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light red thumbs_down'><i class='material-icons'>thumb_down</i></button></td>"
-        + "<td class='button-col'>" + "<a href='/ideas/" + idea.id + "/edit'" +  "class='btn-floating btn-large waves-effect waves-light blue edit'><i class='material-icons thumb_down'>mode_edit</i></a></td>"
         + "<td class='button-col'><button class='btn-floating btn-large waves-effect waves-light black delete'><i class='material-icons'>delete</i></button></td>"
         + "</tr>"
     )
@@ -113,3 +113,4 @@ function trimBody(text) {
         return text
     }
 };
+

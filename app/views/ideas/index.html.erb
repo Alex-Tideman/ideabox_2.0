@@ -1,18 +1,17 @@
 <div class="row">
-    <div class="col s9 idea-list">
-      <h4>List of Ideas</h4>
-      <%= form_tag ideas_path, :method => 'get', :id => "ideas_search" do %>
-          <p id="idea-filter">
-            <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-          </p>
-          <div id="ideas"><%= render partial: 'partials/idea_table' %></div>
-      <% end %>
-    </div>
-    <div class="col s3 new-idea">
-      <h4>New Idea</h4>
-      Title:<br> <input type="text" id="idea-title" /><br>
-      Body:<br> <input type="text" id="idea-body" /><br>
-      <button id="idea-create" class="btn waves-effect waves-light blue">Save</button>
-    </div>
+  <div class="col s9 idea-list">
+    <h4>List of Ideas</h4>
+    <%= form_tag ideas_path, :method => 'get', :id => "ideas_search" do %>
+        <p id="idea-filter">
+          <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        </p>
+        <div id="ideas"><%= render partial: 'partials/idea_table' %></div>
+    <% end %>
+  </div>
+  <div class="col s3 new-idea">
+    <h4>New Idea</h4>
+    Title:<br> <input type="text" id="idea-title" /><br>
+    Body:<br> <input type="text" id="idea-body" /><br>
+    <button id="idea-create" class="btn waves-effect waves-light blue">Save</button>
   </div>
 </div>

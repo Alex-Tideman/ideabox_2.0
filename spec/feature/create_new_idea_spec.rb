@@ -2,7 +2,7 @@ require './spec/rails_helper'
 
 RSpec.describe "create new idea and edit existing idea", type: :feature do
 
-  xit 'view index page and create idea' do
+  it 'view index page and create idea' do
     visit root_path
 
     expect(page).to have_content("Ideas")
@@ -17,7 +17,7 @@ RSpec.describe "create new idea and edit existing idea", type: :feature do
     click_link_or_button 'Save'
 
     expect(page).to have_content("Great idea")
-    expect(page).to have_content("testing")
+    expect(page).to have_content("Testing")
     expect(page).to have_content("Swill")
 
   end

@@ -24,6 +24,7 @@ function ideaCreation() {
             success: function(idea) {
                 renderIdea(idea);
                 clearIdea();
+                drawHello();
             }
         });
     });

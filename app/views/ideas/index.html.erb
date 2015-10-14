@@ -4,6 +4,8 @@
     <button id="idea-create" class="btn waves-effect waves-light blue">Save</button>
     Title: <input type="text" id="new-idea-title" /><br>
     Body: <input type="text" id="new-idea-body" /><br>
+    <canvas id="canvas">
+    </canvas>
   </div>
   <div class="col s8 idea-list-col">
     <%= form_tag ideas_path, :method => 'get', :id => "ideas_search" do %>

@@ -3,6 +3,7 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.search(params[:search]).order('created_at DESC')
+
   end
 
   def create

@@ -99,8 +99,8 @@ function renderIdea(idea) {
 };
 
 function clearIdea() {
-    $('#idea-title').val('');
-    $('#idea-body').val('');
+    $('#new-idea-title').val('');
+    $('#new-idea-body').val('');
 };
 
 function trimBody(text) {

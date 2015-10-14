@@ -14,7 +14,7 @@
   <% @ideas.each do |idea| %>
       <tr data-id="<%= idea.id %>">
         <td class="title"><%= best_in_place idea, :title, type: :textarea%></td>
-        <td class="body"><%= best_in_place idea, :trunc_body, type: :textarea %></td>
+        <td class="body"><%= best_in_place idea, :body, value: idea.trunc_body, type: :textarea %></td>
         <td class="quality"><%= idea.quality_word %></td>
         <td class="button-col">
           <button class="btn-floating btn-large waves-effect waves-light green thumbs_up">

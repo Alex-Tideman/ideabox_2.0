@@ -3,6 +3,12 @@ class Idea < ActiveRecord::Base
   attr_reader :trunc_body
 
   validates :title, :body, presence: true
+  before_save :capitalize
+
+  def capitalize
+    self.title = title.slice(0,1).capitalize + title.slice(1..-1)
+    self.body = body.slice(0,1).capitalize + body.slice(1..-1)
+  end
 
   def quality_word
     if quality == 1

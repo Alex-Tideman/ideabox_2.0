@@ -19,6 +19,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem "teaspoon-jasmine"
+  gem 'phantomjs'
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'

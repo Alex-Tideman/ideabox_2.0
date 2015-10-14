@@ -40,7 +40,7 @@ function ideaDestroy() {
             url: "/ideas/" + ideaId,
             type: "DELETE",
             dataType: "json",
-            data: { id: ideaId},
+            //data: { id: ideaId},
             success: function(idea) {
                 ideaRow.remove();
             }

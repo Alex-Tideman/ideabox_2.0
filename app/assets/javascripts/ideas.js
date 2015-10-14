@@ -52,13 +52,11 @@ function thumbsUp(){
 
         var ideaId = $(this).parent().parent().attr("data-id");
         var quality = $(this).parent().parent().find('.quality');
+
         if(quality.html('Swill')) {
             quality.html('Plausible');
         }
         else if(quality.html('Plausible')) {
-            quality.html('Genius');
-        }
-        else {
             quality.html('Genius');
         }
 
@@ -68,25 +66,23 @@ function thumbsUp(){
             dataType: "json",
             data: { id: ideaId },
             success: function() {
-                thumbsUp();
-                thumbsDown();
             }
         });
     })
 }
 
 function thumbsDown(){
+
+
     $('.thumbs_down').on('click', function () {
 
         var ideaId = $(this).parent().parent().attr("data-id");
         var quality = $(this).parent().parent().find('.quality');
+
         if(quality.html('Genius')) {
             quality.html('Plausible');
         }
         else if(quality.html('Plausible')) {
-            quality.html('Swill');
-        }
-        else {
             quality.html('Swill');
         }
 
@@ -96,11 +92,9 @@ function thumbsDown(){
             dataType: "json",
             data: { id: ideaId },
             success: function() {
-                thumbsDown();
-                thumbsUp();
             }
         });
-    })
+    });
 }
 
 
@@ -125,6 +119,11 @@ function clearIdea() {
 
 function trimBody(text) {
     var maxLength = 100;
-    var trimmedString = text.substr(0, maxLength);
-    return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + "..."
+    if(text.length > 100) {
+        var trimmedString = text.substr(0, maxLength);
+        return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + "..."
+    }
+    else {
+        return text
+    }
 };

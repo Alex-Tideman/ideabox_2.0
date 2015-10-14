@@ -1,6 +1,6 @@
-$(document).ready(function() {
-    drawHello();
-});
+//$(document).ready(function() {
+//    drawHello();
+//});
 
 function drawHello() {
     var c = document.getElementById("canvas");

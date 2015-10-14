@@ -20,9 +20,31 @@
 }
 
 .new-idea {
+  margin-top: -50px;
   background: #e8e8e8;
   padding: 25px;
-  height: 350px;
+  height: 150px;
+  width: 60%;
+  float:right;
+}
+
+#new-idea-title {
+  width:25%;
+  height:30px;
+  background: white;
+}
+
+#new-idea-body {
+  width:60%;
+  height:30px;
+  background: white;
+  margin-bottom: 25px;
+}
+
+#idea-create {
+  position: absolute;
+  right:25px;
+  top:100px;
 }
 
 .edit-idea {

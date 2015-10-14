@@ -12,7 +12,7 @@ function ideaCreation() {
         event.preventDefault();
         var ideaParams = {
             idea: {
-                title: $('#idea-title').val(), body: $('#idea-body').val()
+                title: $('#new-idea-title').val(), body: $('#new-idea-body').val()
             }
         };
 
